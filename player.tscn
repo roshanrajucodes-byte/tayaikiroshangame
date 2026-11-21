@@ -52,3 +52,6 @@ sprite_frames = SubResource("SpriteFrames_lfkbx")
 animation = &"run_side"
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=268679223]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=118386172]
+zoom = Vector2(5, 5)
