@@ -1,14 +1,85 @@
 extends Area2D
 
 @export var label: Label
+@onready var event_bar: TextureRect = get_tree().current_scene.find_child("EventBar", true, false)
+
+var player_in_range: bool = false
+var is_minigame_active: bool = false
 
 func _ready() -> void:
-	label.visible = false
+	if label:
+		label.visible = false
+	
+	if event_bar:
+		event_bar.visible = false
+		print("DEBUG: EventBar successfully found in the scene.")
+		
+		if not event_bar.is_connected("bonus_done", _on_minigame_won):
+			event_bar.bonus_done.connect(_on_minigame_won)
+		if not event_bar.is_connected("fail", _on_minigame_lost):
+			event_bar.fail.connect(_on_minigame_lost)
+	else:
+		print("DEBUG ERROR: EventBar could NOT be found in the scene!")
 
 func _on_body_entered(body: Node2D) -> void:
-	label.visible = true
-	if Input.is_action_pressed("e"):
-		pass
+	if body.name == "player":
+		player_in_range = true
+		print("DEBUG: Player entered the Area2D range.")
+		if label and not is_minigame_active:
+			label.visible = true
 
 func _on_body_exited(body: Node2D) -> void:
-	label.visible = false
+	if body.name == "player":
+		player_in_range = false
+		print("DEBUG: Player left the Area2D range.")
+		if label:
+			label.visible = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if player_in_range and event.is_action_pressed("e") and not is_minigame_active:
+		print("DEBUG: 'e' pressed while in range! Opening minigame...")
+		start_minigame()
+
+func start_minigame() -> void:
+	is_minigame_active = true
+	
+	if label:
+		label.visible = false
+		
+	if event_bar:
+		# Force the CanvasLayer and EventBar to be visible
+		var minigame_layer = get_tree().current_scene.find_child("MinigameLayer", true, false)
+		if minigame_layer:
+			minigame_layer.visible = true
+			
+		event_bar.visible = true
+		event_bar.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+		
+		# Call start() to kick off the movement loop
+		if event_bar.has_method("start"):
+			event_bar.start()
+			print("DEBUG: EventBar start() called successfully.")
+		else:
+			print("DEBUG ERROR: EventBar script is missing the start() method!")
+		
+	# Pause the rest of the game world
+	get_tree().paused = true
+
+func _on_minigame_won() -> void:
+	print("DEBUG: Minigame finished - WON!")
+	close_minigame()
+
+func _on_minigame_lost() -> void:
+	print("DEBUG: Minigame finished - LOST!")
+	close_minigame()
+
+func close_minigame() -> void:
+	get_tree().paused = false
+	is_minigame_active = false
+	
+	if event_bar:
+		event_bar.visible = false
+		
+	if player_in_range and label:
+		label.visible = true
+	print("DEBUG: Minigame closed, game unpaused.")

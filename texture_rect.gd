@@ -1,16 +1,16 @@
+# minigame_texture_rect.gd
 extends TextureRect
 
+signal minigame_finished(success: bool)
 signal bonus_done()
 signal fail()
 
 @export var duration: float = 1.0
 @export var indicator: TextureRect
-
 var xEndPosition: float 
 @export var bonusRangeX: Vector2 = Vector2(28.0, 36.0)
 
 var is_moving: bool = false
-
 
 func _ready() -> void:
 	if indicator:
@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 		
 	indicator.position.x -= (size.x / duration) * delta
 	
-	# When time runs out without clicking, it now triggers a fail directly
+	# Time ran out without clicking -> Fail
 	if indicator.position.x < xEndPosition:
 		_finish()
 
@@ -56,9 +56,14 @@ func _finish():
 	var inBonusRange = _in_range(bonusRangeX)
 	
 	if inBonusRange:
-		bonus_done.emit()
+		# Player succeeded (hit the bonus zone)
+		minigame_finished.emit(true)
 	else:
-		fail.emit()
+		# Player failed (missed the zone or ran out of time)
+		minigame_finished.emit(false)
+		
+	# Clean up and close the minigame overlay
+	queue_free()
 	
 func _in_range(eventRange: Vector2):
 	if not indicator:
