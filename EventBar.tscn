@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://biv0qhlggja04"]
+
+[ext_resource type="Texture2D" uid="uid://cj5iegnv0s8h5" path="res://New Piskel/New Piskel (2) (2).png" id="1_jx8ej"]
+[ext_resource type="Script" uid="uid://1ln3e28uxdoe" path="res://texture_rect.gd" id="2_gkix1"]
+[ext_resource type="Texture2D" uid="uid://dip3tfndp2i12" path="res://New Piskel (2) (4).png" id="3_akqvf"]
+
+[node name="EventBar" type="TextureRect" unique_id=1380721949 node_paths=PackedStringArray("indicator")]
+offset_right = 60.0
+offset_bottom = 40.0
+texture = ExtResource("1_jx8ej")
+script = ExtResource("2_gkix1")
+indicator = NodePath("Indacator")
+
+[node name="Indacator" type="TextureRect" parent="." unique_id=883644947]
+layout_mode = 1
+offset_left = -8.0
+offset_top = 4.0
+offset_right = 24.0
+offset_bottom = 36.0
+texture = ExtResource("3_akqvf")

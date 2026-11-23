@@ -1,47 +1,92 @@
 [gd_scene format=3 uid="uid://dum48xhebe5xu"]
 
-[ext_resource type="Texture2D" uid="uid://dngtvf7rnnwud" path="res://download.webp" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://csrycf7tgona" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://df2g5wkrknrfo" path="res://addons/New Piskel (2)/l0_cat6.png" id="2_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://cv5ogxyo4qlyo" path="res://addons/New Piskel (2)/l0_cat1.png" id="3_nvl01"]
+[ext_resource type="Texture2D" uid="uid://dw4wy8uqitup4" path="res://addons/New Piskel (2)/l0_cat7.png" id="4_ivps1"]
+[ext_resource type="Texture2D" uid="uid://c6hqklsbh1qxb" path="res://addons/New Piskel (2)/l0_cat5.png" id="5_urp6f"]
+[ext_resource type="Texture2D" uid="uid://b6tplsnnkggtu" path="res://addons/New Piskel (2)/l0_cat4.png" id="6_bwjto"]
+[ext_resource type="Texture2D" uid="uid://doh4fecdqqicq" path="res://addons/New Piskel (2)/l0_cat3.png" id="7_606se"]
+[ext_resource type="Texture2D" uid="uid://brlmi3eoxed1y" path="res://addons/New Piskel (2)/l0_cat2.png" id="8_u1c27"]
+[ext_resource type="Texture2D" uid="uid://dgvje4uf0clfl" path="res://addons/New Piskel (2)/l0_cat8.png" id="9_op7ga"]
+[ext_resource type="Texture2D" uid="uid://dk54iusmf8l34" path="res://addons/New Piskel (2)/l0_cat9.png" id="10_q13i1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aui74"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lfkbx"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_n7ghd")
+}],
 "loop": 1,
 "name": &"idle_down",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nvl01")
+}],
 "loop": 1,
 "name": &"idle_side",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ivps1")
+}],
 "loop": 1,
 "name": &"idle_up",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_n7ghd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_urp6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bwjto")
+}],
 "loop": 1,
 "name": &"run_down",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_4flbx")
+"texture": ExtResource("3_nvl01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_606se")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_u1c27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_606se")
 }],
 "loop": 1,
 "name": &"run_side",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_op7ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_q13i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ivps1")
+}],
 "loop": 1,
 "name": &"run_up",
 "speed": 5.0
 }]
 
 [node name="player" type="CharacterBody2D" unique_id=1104246028]
+scale = Vector2(5, 5)
 script = ExtResource("1_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1914299367]
@@ -49,9 +94,10 @@ shape = SubResource("RectangleShape2D_aui74")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1398224729]
 sprite_frames = SubResource("SpriteFrames_lfkbx")
-animation = &"run_side"
+animation = &"run_down"
+frame_progress = 0.034848586
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=268679223]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=118386172]
-zoom = Vector2(5, 5)
+zoom = Vector2(9, 9)

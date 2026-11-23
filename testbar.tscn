@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://slwek3tglpe"]
+
+[ext_resource type="Script" uid="uid://b3bh3drg6b2ec" path="res://test.gd" id="1_ksn51"]
+[ext_resource type="PackedScene" uid="uid://biv0qhlggja04" path="res://EventBar.tscn" id="2_41kux"]
+
+[node name="test" type="Control" unique_id=1875654737]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ksn51")
+
+[node name="Label" type="Label" parent="." unique_id=1941343028]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "test"
+
+[node name="EventBar" parent="." unique_id=1380721949 instance=ExtResource("2_41kux")]
+layout_mode = 0
+offset_top = 18.0
+offset_bottom = 58.0
+
+[connection signal="bonus_done" from="EventBar" to="." method="_on_event_bar_bonus_done"]
+[connection signal="fail" from="EventBar" to="." method="_on_event_bar_fail"]
