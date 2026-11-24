@@ -1,6 +1,6 @@
 # minigame_texture_rect.gd
 extends TextureRect
-
+#TY TO MERCHANT-OF-LIFE ON THE TAIYAKI SLACK
 signal minigame_finished(success: bool)
 signal bonus_done()
 signal fail()
@@ -8,14 +8,14 @@ signal fail()
 @export var duration: float = 1.0
 @export var indicator: TextureRect
 var xEndPosition: float 
-@export var bonusRangeX: Vector2 = Vector2(28.0, 36.0)
+@export var bonusRangeX: Vector2 = Vector2(93.0, 120.0)
 
 var is_moving: bool = false
 
 func _ready() -> void:
 	if indicator:
 		xEndPosition = 0.0 - (indicator.size.x / 2)
-		start()
+		
 	else:
 		push_error("ERROR: No indicator assigned in the Inspector!")
 
@@ -58,6 +58,7 @@ func _finish():
 	if inBonusRange:
 		# Player succeeded (hit the bonus zone)
 		minigame_finished.emit(true)
+		print("you caught the tayaki")
 	else:
 		# Player failed (missed the zone or ran out of time)
 		minigame_finished.emit(false)
@@ -76,5 +77,3 @@ func _in_range(eventRange: Vector2):
 	else:
 		return false
 	
-func reset():
-	start()

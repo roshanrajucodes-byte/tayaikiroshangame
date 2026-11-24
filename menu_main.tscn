@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bhefbnpcejyj3"]
 
 [ext_resource type="Script" uid="uid://bi8sch1uw5v5q" path="res://menu_main.gd" id="1_1pa77"]
+[ext_resource type="Texture2D" uid="uid://dqwskrucpwi0d" path="res://cat_resized_1152x648.png" id="2_plom5"]
 
 [node name="MenuMain" type="Control" unique_id=765791712]
 layout_mode = 3
@@ -11,10 +12,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1pa77")
 
+[node name="CatResized1152x648" type="Sprite2D" parent="." unique_id=173432700]
+position = Vector2(580, 323)
+texture = ExtResource("2_plom5")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=831457655]
-layout_mode = 0
-offset_right = 137.0
-offset_bottom = 101.0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -50.5
+offset_right = 275.0
+offset_bottom = 51.0
+grow_vertical = 2
 
 [node name="Play" type="Button" parent="VBoxContainer" unique_id=1375001423]
 layout_mode = 2
