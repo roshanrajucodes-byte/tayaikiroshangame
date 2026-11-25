@@ -1,18 +1,32 @@
 ~ start
 if not GameState.talked_to_glep:
 	Glep: Hi I am [wave]glep[/wave] .
+	Glep: Use arrow keys to move
 	Glep: Head down to the dock [wait=1]press e and start fishing
+	Glep: A bar will apear left mouse click when the bar is in the green to catch the taiyaki
+	Glep: There is a taiyaki caught number in the top left corner
+	Glep: Does this all make sense
 	- I undestand
-		Glep: Good come back with 10 taiyaki
+		Glep: Good come back to my shack once u have gotten  10 taiyaki
 	- Im confuesed where am I?
 		Glep: Dont worry[wait=1] I was to [wait=1] You will figure it out [wait=2] Just come back when you have gotten 10 taiyaki 
 	$> GameState.talked_to_glep = true 
 else:
 	Glep: Hi you got that taiyaki
 	- yes
-		Glep: Liar the game is broken and stuck frozen after the minigame ends
+		if GameState.taiyaki_caught>=10:
+			Glep: wow congrats that is all that god has coded for now
+			Glep: Updates to come!
+		else:
+			Glep: Glep is very upset u lied
+			Glep: go fish and get the remaining taiyaki
 	- no
-		Glep: Go fish then!!! [wait=1] What are you waiting for?
+		if GameState.taiyaki_caught>=10:
+			Glep: oh it looks like u have why did u tell me no?
+			Glep: Anyways congrats that is all that god has coded for now
+			Glep: Updates to come!
+		else:
+			Glep: Go fish then!!! [wait=1] What are you waiting for?
 	
 
 => END

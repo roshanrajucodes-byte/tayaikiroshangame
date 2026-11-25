@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://brlmi3eoxed1y" path="res://addons/New Piskel (2)/l0_cat2.png" id="8_u1c27"]
 [ext_resource type="Texture2D" uid="uid://dgvje4uf0clfl" path="res://addons/New Piskel (2)/l0_cat8.png" id="9_op7ga"]
 [ext_resource type="Texture2D" uid="uid://dk54iusmf8l34" path="res://addons/New Piskel (2)/l0_cat9.png" id="10_q13i1"]
+[ext_resource type="Script" uid="uid://6uop5ykwi6xg" path="res://canvas_layer.gd" id="11_ivps1"]
+[ext_resource type="Texture2D" uid="uid://dvg5ybr4rcfxj" path="res://New Piskel (7).png" id="11_nvl01"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aui74"]
 
@@ -101,3 +103,21 @@ zoom = Vector2(9, 9)
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=174953496]
 target_position = Vector2(0.59999996, 30.599998)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1371185842]
+script = ExtResource("11_ivps1")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=890673054]
+position = Vector2(30.250004, 28.250002)
+scale = Vector2(2.421875, 2.4843752)
+texture = ExtResource("11_nvl01")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=660132271]
+anchors_preset = -1
+anchor_right = 0.106000006
+anchor_bottom = 0.079
+offset_left = 51.0
+offset_right = -0.11200714
+offset_bottom = -0.19200134
+theme_override_font_sizes/font_size = 35
+text = "Test"

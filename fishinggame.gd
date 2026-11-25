@@ -41,20 +41,22 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func start_minigame() -> void:
 	is_minigame_active = true
-	
+
 	if label:
 		label.visible = false
-		
+
+	get_tree().paused = true
+
 	if event_bar:
-		# Force the CanvasLayer and EventBar to be visible
 		var minigame_layer = get_tree().current_scene.find_child("MinigameLayer", true, false)
+
 		if minigame_layer:
 			minigame_layer.visible = true
-			
+			minigame_layer.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+
 		event_bar.visible = true
 		event_bar.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-		
-		# Call start() to kick off the movement loop
+
 		if event_bar.has_method("start"):
 			event_bar.start()
 			
@@ -72,12 +74,15 @@ func _on_minigame_lost() -> void:
 	close_minigame()
 
 func close_minigame() -> void:
+	print("CLOSE MINIGAME CALLED")
+
 	get_tree().paused = false
 	is_minigame_active = false
-	
+
 	if event_bar:
 		event_bar.visible = false
-		
+
 	if player_in_range and label:
 		label.visible = true
-	print("Minigame closed, game unpaused.")
+
+	print("Game paused status: ", get_tree().paused)

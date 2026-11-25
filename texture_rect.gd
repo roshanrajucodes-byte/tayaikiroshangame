@@ -22,9 +22,12 @@ func _ready() -> void:
 func start() -> void:
 	if not indicator:
 		return
-		
+	visible = true
 	indicator.position.x = size.x - (indicator.size.x / 2)
 	indicator.position.y = (size.y / 2) - (indicator.size.y / 2)
+	
+	is_moving = true
+	set_process(true)
 	
 	is_moving = true
 	set_process(true)
@@ -56,15 +59,17 @@ func _finish():
 	var inBonusRange = _in_range(bonusRangeX)
 	
 	if inBonusRange:
-		# Player succeeded (hit the bonus zone)
 		minigame_finished.emit(true)
+		GameState.taiyaki_caught+=1
+		print(GameState.taiyaki_caught)
+		bonus_done.emit()
 		print("you caught the tayaki")
 	else:
 		# Player failed (missed the zone or ran out of time)
 		minigame_finished.emit(false)
-		
+		fail.emit()
 	# Clean up and close the minigame overlay
-	queue_free()
+	visible = false
 	
 func _in_range(eventRange: Vector2):
 	if not indicator:

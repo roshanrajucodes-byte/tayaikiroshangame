@@ -3,15 +3,17 @@
 [ext_resource type="PackedScene" uid="uid://dum48xhebe5xu" path="res://player.tscn" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://g2h6nvygboho" path="res://tile_map_layer.tscn" id="2_fc0e3"]
 [ext_resource type="Script" uid="uid://buj5rdrihlrbn" path="res://fishinggame.gd" id="3_feb5d"]
+[ext_resource type="Script" uid="uid://c56t8mpp1lvur" path="res://objective_arrow.gd" id="3_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://biv0qhlggja04" path="res://EventBar.tscn" id="4_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://dj441e4ccolj0" path="res://New Piskel/New Piskel (6).png" id="4_vef74"]
 [ext_resource type="Script" uid="uid://dffl412d5lwos" path="res://area_2d_2.gd" id="5_7jktm"]
 [ext_resource type="Resource" uid="uid://76gx5l3tae5v" path="res://dialogue/glep.dialogue" id="6_eow3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vicex"]
 size = Vector2(32, 64.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aui74"]
-size = Vector2(20, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7ghd"]
+size = Vector2(20, 9)
 
 [node name="Node2D" type="Node2D" unique_id=1774391655]
 
@@ -21,28 +23,39 @@ size = Vector2(20, 8)
 position = Vector2(82, 70)
 scale = Vector2(0.5, 0.5)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=609919547 node_paths=PackedStringArray("label")]
+[node name="ObjectiveArrow2" type="Node2D" parent="player" unique_id=1229749916 node_paths=PackedStringArray("target", "player")]
+scale = Vector2(0.99999994, 0.99999994)
+script = ExtResource("3_j5wjh")
+target = NodePath("../../Glep")
+player = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="player/ObjectiveArrow2" unique_id=326730339]
+position = Vector2(18.800001, 1.6000013)
+scale = Vector2(0.34999996, 0.28125)
+texture = ExtResource("4_vef74")
+
+[node name="FishingArea" type="Area2D" parent="." unique_id=609919547 node_paths=PackedStringArray("label")]
+position = Vector2(207, 211)
 script = ExtResource("3_feb5d")
 label = NodePath("../CanvasLayer/Label")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=476437408]
-position = Vector2(209, 222.75)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingArea" unique_id=476437408]
+position = Vector2(1, 11)
 shape = SubResource("RectangleShape2D_vicex")
 debug_color = Color(0.2959608, 0.623352, 0.25309527, 0.41960785)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=474132207]
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=987729483]
-anchors_preset = -1
-anchor_top = 0.96450615
-anchor_right = 0.09375
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-offset_right = 108.0
-offset_bottom = 23.0
+offset_top = -45.0
+offset_right = 216.0
 grow_vertical = 0
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
 text = "press e to fish"
-metadata/_edit_use_anchors_ = true
 
 [node name="MinigameLayer" type="CanvasLayer" parent="." unique_id=158767012]
 layer = 2
@@ -50,14 +63,15 @@ layer = 2
 [node name="EventBar" parent="MinigameLayer" unique_id=1380721949 instance=ExtResource("4_fc0e3")]
 scale = Vector2(3, 3)
 
-[node name="Area2D2" type="Area2D" parent="." unique_id=144083146]
+[node name="Glep" type="Area2D" parent="." unique_id=144083146]
+position = Vector2(47, 89)
 script = ExtResource("5_7jktm")
 dialogue_resource = ExtResource("6_eow3j")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1243354214]
-position = Vector2(47, 91)
-shape = SubResource("RectangleShape2D_aui74")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Glep" unique_id=1243354214]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_n7ghd")
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
-[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]
+[connection signal="body_entered" from="FishingArea" to="FishingArea" method="_on_body_entered"]
+[connection signal="body_exited" from="FishingArea" to="FishingArea" method="_on_body_exited"]
+[connection signal="body_entered" from="Glep" to="Glep" method="_on_body_entered"]
