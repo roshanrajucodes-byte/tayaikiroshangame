@@ -1,0 +1,18 @@
+~ start
+if not GameState.talked_to_glep:
+	Glep: Hi I am [wave]glep[/wave] .
+	Glep: Head down to the dock [wait=1]press e and start fishing
+	- I undestand
+		Glep: Good come back with 10 taiyaki
+	- Im confuesed where am I?
+		Glep: Dont worry[wait=1] I was to [wait=1] You will figure it out [wait=2] Just come back when you have gotten 10 taiyaki 
+	$> GameState.talked_to_glep = true 
+else:
+	Glep: Hi you got that taiyaki
+	- yes
+		Glep: Liar the game is broken and stuck frozen after the minigame ends
+	- no
+		Glep: Go fish then!!! [wait=1] What are you waiting for?
+	
+
+=> END

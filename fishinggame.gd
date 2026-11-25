@@ -12,32 +12,31 @@ func _ready() -> void:
 	
 	if event_bar:
 		event_bar.visible = false
-		print("DEBUG: EventBar successfully found in the scene.")
+		
 		
 		if not event_bar.is_connected("bonus_done", _on_minigame_won):
 			event_bar.bonus_done.connect(_on_minigame_won)
 		if not event_bar.is_connected("fail", _on_minigame_lost):
 			event_bar.fail.connect(_on_minigame_lost)
-	else:
-		print("DEBUG ERROR: EventBar could NOT be found in the scene!")
+	
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "player":
 		player_in_range = true
-		print("DEBUG: Player entered the Area2D range.")
+		print("Player entered the Area2D range.")
 		if label and not is_minigame_active:
 			label.visible = true
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.name == "player":
 		player_in_range = false
-		print("DEBUG: Player left the Area2D range.")
+		print(" Player left the Area2D range.")
 		if label:
 			label.visible = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if player_in_range and event.is_action_pressed("e") and not is_minigame_active:
-		print("DEBUG: 'e' pressed while in range! Opening minigame...")
+		print("e pressed starting minigame")
 		start_minigame()
 
 func start_minigame() -> void:
@@ -58,19 +57,18 @@ func start_minigame() -> void:
 		# Call start() to kick off the movement loop
 		if event_bar.has_method("start"):
 			event_bar.start()
-			print("DEBUG: EventBar start() called successfully.")
-		else:
-			print("DEBUG ERROR: EventBar script is missing the start() method!")
+			
+		
 		
 	# Pause the rest of the game world
 	get_tree().paused = true
 
 func _on_minigame_won() -> void:
-	print("DEBUG: Minigame finished - WON!")
+	
 	close_minigame()
 
 func _on_minigame_lost() -> void:
-	print("DEBUG: Minigame finished - LOST!")
+	
 	close_minigame()
 
 func close_minigame() -> void:
@@ -82,4 +80,4 @@ func close_minigame() -> void:
 		
 	if player_in_range and label:
 		label.visible = true
-	print("DEBUG: Minigame closed, game unpaused.")
+	print("Minigame closed, game unpaused.")

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://76gx5l3tae5v"
+path="res://.godot/imported/glep.dialogue-0b43e88e18c7e37099e0cfc0400d253c.tres"
+
+[deps]
+
+source_file="res://dialogue/glep.dialogue"
+dest_files=["res://.godot/imported/glep.dialogue-0b43e88e18c7e37099e0cfc0400d253c.tres"]
+
+[params]
+
+defaults=true
