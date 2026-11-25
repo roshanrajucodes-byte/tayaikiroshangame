@@ -94,10 +94,10 @@ shape = SubResource("RectangleShape2D_aui74")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1398224729]
 sprite_frames = SubResource("SpriteFrames_lfkbx")
-animation = &"run_down"
-frame_progress = 0.034848586
-
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=268679223]
+animation = &"idle_down"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=118386172]
 zoom = Vector2(9, 9)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=174953496]
+target_position = Vector2(0.59999996, 30.599998)

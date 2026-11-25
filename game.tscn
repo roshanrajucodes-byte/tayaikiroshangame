@@ -6,14 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://biv0qhlggja04" path="res://EventBar.tscn" id="4_fc0e3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vicex"]
-size = Vector2(32, 63)
+size = Vector2(32, 64.5)
 
 [node name="Node2D" type="Node2D" unique_id=1774391655]
 
 [node name="TileMapLayer" parent="." unique_id=254483554 instance=ExtResource("2_fc0e3")]
-position = Vector2(-132, -110)
 
 [node name="player" parent="." unique_id=1104246028 instance=ExtResource("1_80nbo")]
+position = Vector2(82, 70)
 scale = Vector2(0.5, 0.5)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=609919547 node_paths=PackedStringArray("label")]
@@ -21,7 +21,7 @@ script = ExtResource("3_feb5d")
 label = NodePath("../CanvasLayer/Label")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=476437408]
-position = Vector2(75, 112.5)
+position = Vector2(209, 222.75)
 shape = SubResource("RectangleShape2D_vicex")
 debug_color = Color(0.2959608, 0.623352, 0.25309527, 0.41960785)
 

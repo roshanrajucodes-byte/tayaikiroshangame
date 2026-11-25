@@ -39,6 +39,7 @@ func _normal_movement() -> void:
 		ray_cast2d.target_position = direction * TILE_SIZE
 		ray_cast2d.force_raycast_update()
 		
+		# If it's colliding with a wall, STOP HERE and do not call _move_to
 		if ray_cast2d.is_colliding():
 			return
 		
@@ -53,6 +54,9 @@ func _move_to(targetPosition: Vector2) -> void:
 	await tween.finished
 	
 	onMove = false
+	
+	# Force the raycast to update immediately after stopping so it detects walls instantly
+	ray_cast2d.force_raycast_update()
 
 func _set_animation() -> void:
 	if currentDirection.x > 0:

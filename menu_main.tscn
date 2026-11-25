@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bhefbnpcejyj3"]
 
 [ext_resource type="Script" uid="uid://bi8sch1uw5v5q" path="res://menu_main.gd" id="1_1pa77"]
-[ext_resource type="Texture2D" uid="uid://dqwskrucpwi0d" path="res://cat_resized_1152x648.png" id="2_plom5"]
+[ext_resource type="Texture2D" uid="uid://57ncv5mova6s" path="res://l0_cat2 (3).png" id="2_plom5"]
 
 [node name="MenuMain" type="Control" unique_id=765791712]
 layout_mode = 3
@@ -12,8 +12,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1pa77")
 
-[node name="CatResized1152x648" type="Sprite2D" parent="." unique_id=173432700]
-position = Vector2(580, 323)
+[node name="L0Cat2(3)" type="Sprite2D" parent="." unique_id=1980958346]
+position = Vector2(580.5, 326.5)
+scale = Vector2(4.0243053, 4.0061727)
 texture = ExtResource("2_plom5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=831457655]
@@ -28,15 +29,36 @@ grow_vertical = 2
 
 [node name="Play" type="Button" parent="VBoxContainer" unique_id=1375001423]
 layout_mode = 2
+theme_override_font_sizes/font_size = 34
 text = "Play"
 
 [node name="Options" type="Button" parent="VBoxContainer" unique_id=1337174438]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Options"
 
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=1474442446]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Quit Game"
+
+[node name="Label" type="Label" parent="." unique_id=552138473]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 13.0
+offset_right = 446.0
+offset_bottom = 95.0
+theme_override_font_sizes/font_size = 58
+text = "TAIYAKI"
+
+[node name="Label2" type="Label" parent="." unique_id=2117937450]
+layout_mode = 0
+offset_left = 462.0
+offset_top = 19.0
+offset_right = 634.0
+offset_bottom = 99.0
+text = "A game about a
+ cat who liked taiyaki"
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
