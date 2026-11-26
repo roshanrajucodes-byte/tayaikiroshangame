@@ -11,22 +11,42 @@ if not GameState.talked_to_glep:
 	- Im confuesed where am I?
 		Glep: Dont worry[wait=1] I was to [wait=1] You will figure it out [wait=2] Just come back when you have gotten 10 taiyaki 
 	$> GameState.talked_to_glep = true 
-else:
+elif not GameState.area2unlock:
 	Glep: Hi you got that taiyaki
 	- yes
 		if GameState.taiyaki_caught>=10:
-			Glep: wow congrats that is all that god has coded for now
-			Glep: Updates to come!
+			Glep: wow congrats 
+			Glep: Well I better tell u who you are
+			Glep: Your owner left you here in the alternate demension
+			Glep: Your name is taiyaki
+			Glep: Your journey starts here head inland you should meet "garry"
+			Glep: He is a dwarf
+			Glep: I hope your journey goes well
+			Glep: visit sometime will ya?
+			$> GameState.area2unlock = true
 		else:
 			Glep: Glep is very upset u lied
 			Glep: go fish and get the remaining taiyaki
 	- no
 		if GameState.taiyaki_caught>=10:
-			Glep: oh it looks like u have why did u tell me no?
-			Glep: Anyways congrats that is all that god has coded for now
-			Glep: Updates to come!
+			Glep: But u caught 10 taiyaki why did u lie to me?
+			Glep: well congrats 
+			Glep: Well I better tell u who you are
+			Glep: Your owner left you here in the alternate demension
+			Glep: Your name is taiyaki
+			Glep: Your journey starts here head inland you should meet "garry"
+			Glep: He is a dwarf
+			Glep: I hope your journey goes well
+			Glep: visit sometime will ya?
+			$> GameState.area2unlock = true
 		else:
 			Glep: Go fish then!!! [wait=1] What are you waiting for?
-	
-
+else:
+	Glep:You came back
+	Glep: How is that journey going for ya
+	- its tireing
+		Glep: hey dont give up keep going im rooting for u
+	- good
+		Glep: thats good to hear
+	Glep: Well it was nice seeing u again stop by anytime
 => END

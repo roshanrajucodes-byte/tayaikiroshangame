@@ -16,6 +16,7 @@ extends CanvasLayer
 
 ## The action to use for advancing the dialogue
 @export var next_action: StringName = &"ui_accept"
+@onready var portrait: TextureRect = %Portrait
 
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
@@ -86,7 +87,7 @@ func _ready() -> void:
 		if not is_instance_valid(dialogue_resource):
 			assert(false, DMConstants.get_error_message(DMConstants.ERR_MISSING_RESOURCE_FOR_AUTOSTART))
 		start()
-
+	
 
 
 func _process(_delta: float) -> void:
@@ -133,7 +134,11 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
-
+	var portrait_path: String = "res://dialogue/%s.png" % dialogue_line.character 
+	if ResourceLoader.exists(portrait_path):
+		portrait.texture=load(portrait_path)
+	else:
+		portrait.texture=null
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
 

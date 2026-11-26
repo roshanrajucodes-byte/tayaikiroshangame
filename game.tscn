@@ -8,12 +8,22 @@
 [ext_resource type="Texture2D" uid="uid://dj441e4ccolj0" path="res://New Piskel/New Piskel (6).png" id="4_vef74"]
 [ext_resource type="Script" uid="uid://dffl412d5lwos" path="res://area_2d_2.gd" id="5_7jktm"]
 [ext_resource type="Resource" uid="uid://76gx5l3tae5v" path="res://dialogue/glep.dialogue" id="6_eow3j"]
+[ext_resource type="Script" uid="uid://c6a6cd4muib84" path="res://static_body_2d.gd" id="9_vef74"]
+[ext_resource type="Texture2D" uid="uid://drutvjn1orfjy" path="res://New Piskel (8).png" id="10_hve3p"]
+[ext_resource type="Script" uid="uid://dy2oxq1u11bw4" path="res://garry.gd" id="10_iotsf"]
+[ext_resource type="Resource" uid="uid://c8bsnvrhu3tia" path="res://garry.dialogue" id="11_lc2xo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vicex"]
 size = Vector2(32, 64.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7ghd"]
 size = Vector2(20, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfkbx"]
+size = Vector2(20, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aui74"]
+size = Vector2(46, 20)
 
 [node name="Node2D" type="Node2D" unique_id=1774391655]
 
@@ -72,6 +82,26 @@ dialogue_resource = ExtResource("6_eow3j")
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_n7ghd")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=150155252]
+script = ExtResource("9_vef74")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1311176499]
+position = Vector2(0, 38)
+shape = SubResource("RectangleShape2D_lfkbx")
+
+[node name="Garry" type="Area2D" parent="." unique_id=1823315481]
+position = Vector2(-146, -317)
+script = ExtResource("10_iotsf")
+dialogue_resource = ExtResource("11_lc2xo")
+
+[node name="NewPiskel(8)" type="Sprite2D" parent="Garry" unique_id=1267661153]
+texture = ExtResource("10_hve3p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Garry" unique_id=1986179929]
+position = Vector2(-8, 22)
+shape = SubResource("RectangleShape2D_aui74")
+
 [connection signal="body_entered" from="FishingArea" to="FishingArea" method="_on_body_entered"]
 [connection signal="body_exited" from="FishingArea" to="FishingArea" method="_on_body_exited"]
 [connection signal="body_entered" from="Glep" to="Glep" method="_on_body_entered"]
+[connection signal="body_entered" from="Garry" to="Garry" method="_on_body_entered"]

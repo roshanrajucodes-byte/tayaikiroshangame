@@ -4,11 +4,15 @@ extends Node2D
 @export var player: = get_parent()
 @onready var glep = get_tree().current_scene.find_child("Glep", true, false)
 @onready var fishing_area = get_tree().current_scene.find_child("FishingArea", true, false)
-
-
+@onready var finalglep = get_tree().current_scene.find_child("Glep", true, false)
+@onready var garry = get_tree().current_scene.find_child("Garry", true, false)
 
 func _process(delta: float) -> void:
-	if GameState.talked_to_glep:
+	if GameState.area2unlock and not GameState.talked_to_gary:
+		target = garry
+	elif not GameState.area2unlock and GameState.taiyaki_caught>=10:
+		target = finalglep
+	elif GameState.talked_to_glep:
 		target= fishing_area
 	else:
 		target = glep
