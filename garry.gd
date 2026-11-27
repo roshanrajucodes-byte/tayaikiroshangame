@@ -12,6 +12,8 @@ func _on_body_entered(body: Node2D) -> void:
 	DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start)
 	if body.name == "player":
 		player_in_range = true
-		
+		GameState.saved_player_position = body.global_position
+		GameState.returning_from_minigame = true
 		if arrow:
 			arrow.hide_arrow()
+	

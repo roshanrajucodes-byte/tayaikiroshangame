@@ -16,6 +16,7 @@ if not GameState.talked_to_gary:
 	Garry: Here I need some help pushing boxes
 	Garry: My dwarf body has grown weak and cant get up [wait=1] you just need to push the box to the indicaated spot
 	$> GameState.talked_to_gary = true 
+	
 	$> get_tree().change_scene_to_file("res://minigame2/level0.tscn")
 elif not GameState.area2unlock:
 	Garry: Hi you got that taiyaki
@@ -48,7 +49,7 @@ elif not GameState.area2unlock:
 		else:
 			Garry: Go fish then!!! [wait=1] What are you waiting for?
 else:
-	Garry:You came back
+	Garry: Hey thanks
 	Garry: How is that journey going for ya
 	- its tireing
 		Garry: hey dont give up keep going im rooting for u

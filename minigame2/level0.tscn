@@ -151,5 +151,18 @@ shape = SubResource("RectangleShape2D_nhfc8")
 position = Vector2(-8, -6)
 target_position = Vector2(0, 15)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=980896798]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=811226239]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 119.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Press E to reset"
+metadata/_edit_use_anchors_ = true
+
 [connection signal="body_entered" from="spots/spot" to="spots/spot" method="_on_body_entered"]
 [connection signal="body_exited" from="spots/spot" to="spots/spot" method="_on_body_exited"]

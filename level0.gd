@@ -14,12 +14,13 @@ func check_spots():
 		go_next_level()
 		
 func go_next_level():
-	var current_scene_name = get_tree().current_scene.name
-	var level_no =  int(current_scene_name.substr(5))
-	level_no += 1 
-	var path = "res://minigame2/level"+ str(level_no) +".tscn"
-	print(path)
-	if FileAccess.file_exists(path):
-		get_tree().change_scene_to_file(path)
-	else:
-		print("MAKE IT GO BACK NOW CHUD")
+	var current_path = get_tree().current_scene.scene_file_path
+
+	if current_path.ends_with("level0.tscn"):
+		get_tree().change_scene_to_file("res://minigame2/level1.tscn")
+
+	elif current_path.ends_with("level1.tscn"):
+		get_tree().change_scene_to_file("res://minigame2/level2.tscn")
+
+	elif current_path.ends_with("level2.tscn"):
+		get_tree().change_scene_to_file("res://game.tscn")

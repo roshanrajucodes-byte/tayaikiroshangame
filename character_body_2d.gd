@@ -14,7 +14,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	for dir in inputs.keys():
 		if event.is_action_pressed(dir):
 			move(dir)
-			
+	if Input.is_action_pressed("e"):
+		get_tree().reload_current_scene()
 func  move(dir):
 	
 	var vector_pos = inputs[dir]*TILESIZE
