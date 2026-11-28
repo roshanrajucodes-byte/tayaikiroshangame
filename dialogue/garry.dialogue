@@ -1,0 +1,41 @@
+~ start
+if not GameState.talked_to_gary:
+	Garry: Hi Taiyaki its been a while Glep told me you were coming
+	Garry: Last time I saw you was when you were tiny kitten
+	Garry: Have how you been
+	- Who are you?
+		Garry: Oh you dont remeber
+	- Im confuesed where am I?
+		Garry: Oh you dont remmeber
+	Garry: I was told about the incident
+	- The incident?
+		Garry: Oh nothing
+	- What?
+		Garry: Dont worry about it
+	Garry: Im Garry btw
+	Garry: Here I need some help pushing boxes
+	Garry: My dwarf body has grown weak and cant get up [wait=1] you just need to push the box to the indicaated spot
+	Garry: Use arrow keys to move the boxes if you get stuck use e to reset
+	$> GameState.talked_to_gary = true 
+	
+	$> get_tree().change_scene_to_file("res://minigame2/level0.tscn")
+
+elif not GameState.talked_to_gary_final:
+	Garry: Hey thanks
+	Garry: Well I do want to say your owner is here 
+	Garry: Atleast that is what I was told
+	Garry: He was a nice guy
+	Garry: Head more inward into the forrest
+	Garry: You will meet [wave]Taya[/wave] she will be in the river
+	Garry: She is a fish
+	Garry: Visit sometime Taiyaki
+	$> GameState.talked_to_gary_final = true
+	
+else :
+	Garry: Whats up taiyaki?
+	Garry: Hope things are going well
+	Garry: Hey keep up the good work
+	Garry: Your always welcome here
+	Garry: You better get going this mystery isnt goign to solve itself
+	
+=> END

@@ -41,12 +41,5 @@ elif not GameState.area2unlock:
 			$> GameState.area2unlock = true
 		else:
 			Glep: Go fish then!!! [wait=1] What are you waiting for?
-else:
-	Glep:You came back
-	Glep: How is that journey going for ya
-	- its tireing
-		Glep: hey dont give up keep going im rooting for u
-	- good
-		Glep: thats good to hear
-	Glep: Well it was nice seeing u again stop by anytime
+
 => END

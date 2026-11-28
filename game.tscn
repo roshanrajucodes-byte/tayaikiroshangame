@@ -12,7 +12,11 @@
 [ext_resource type="Script" uid="uid://c6a6cd4muib84" path="res://static_body_2d.gd" id="9_vef74"]
 [ext_resource type="Texture2D" uid="uid://drutvjn1orfjy" path="res://New Piskel (8).png" id="10_hve3p"]
 [ext_resource type="Script" uid="uid://dy2oxq1u11bw4" path="res://garry.gd" id="10_iotsf"]
-[ext_resource type="Resource" uid="uid://c8bsnvrhu3tia" path="res://garry.dialogue" id="11_lc2xo"]
+[ext_resource type="Resource" uid="uid://c8bsnvrhu3tia" path="res://dialogue/garry.dialogue" id="11_lc2xo"]
+[ext_resource type="Script" uid="uid://boqr4fae7lplh" path="res://static_body_2d_2.gd" id="14_215e1"]
+[ext_resource type="Texture2D" uid="uid://ct43i4hg3gsou" path="res://New Piskel/New Piskel (13).png" id="15_7sc4i"]
+[ext_resource type="Script" uid="uid://c7qj57tiruvij" path="res://taya.gd" id="15_e8heu"]
+[ext_resource type="Resource" uid="uid://ch8kxpxfknyco" path="res://dialogue/Taya.dialogue" id="16_rvswv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vicex"]
 size = Vector2(32, 64.5)
@@ -25,6 +29,8 @@ size = Vector2(20, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aui74"]
 size = Vector2(46, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77to7"]
 
 [node name="Node2D" type="Node2D" unique_id=1774391655]
 script = ExtResource("1_lc2xo")
@@ -90,6 +96,7 @@ script = ExtResource("9_vef74")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1311176499]
 position = Vector2(0, 38)
 shape = SubResource("RectangleShape2D_lfkbx")
+debug_color = Color(0.8686308, 0.3224925, 0.38290322, 0.41960785)
 
 [node name="Garry" type="Area2D" parent="." unique_id=1823315481]
 position = Vector2(-146, -317)
@@ -103,7 +110,29 @@ texture = ExtResource("10_hve3p")
 position = Vector2(-8, 22)
 shape = SubResource("RectangleShape2D_aui74")
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1337923766]
+script = ExtResource("14_215e1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1047023582]
+position = Vector2(-249, -191)
+shape = SubResource("RectangleShape2D_lfkbx")
+debug_color = Color(0.87187946, 0.27892, 0.5413752, 0.41960785)
+
+[node name="Taya" type="Area2D" parent="." unique_id=1892929757]
+position = Vector2(-814, 0)
+script = ExtResource("15_e8heu")
+dialogue_resource = ExtResource("16_rvswv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Taya" unique_id=1083277610]
+shape = SubResource("RectangleShape2D_77to7")
+
+[node name="NewPiskel(13)" type="Sprite2D" parent="Taya" unique_id=1733282274]
+position = Vector2(-1, 2)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("15_7sc4i")
+
 [connection signal="body_entered" from="FishingArea" to="FishingArea" method="_on_body_entered"]
 [connection signal="body_exited" from="FishingArea" to="FishingArea" method="_on_body_exited"]
 [connection signal="body_entered" from="Glep" to="Glep" method="_on_body_entered"]
 [connection signal="body_entered" from="Garry" to="Garry" method="_on_body_entered"]
+[connection signal="body_entered" from="Taya" to="Taya" method="_on_body_entered"]

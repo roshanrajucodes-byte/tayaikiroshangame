@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://ch8kxpxfknyco"
+path="res://.godot/imported/Taya.dialogue-85698032786fe8b6db94074a146383a1.tres"
+
+[deps]
+
+source_file="res://dialogue/Taya.dialogue"
+dest_files=["res://.godot/imported/Taya.dialogue-85698032786fe8b6db94074a146383a1.tres"]
+
+[params]
+
+defaults=true

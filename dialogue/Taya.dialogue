@@ -1,0 +1,35 @@
+~ start
+if not GameState.talked_to_taya:
+	Taya: Hi taiyaki
+	Taya: Im Taya we were quite good friends before the incident
+	- Incident?
+		Taya: Its best if you dont know what it is
+	- Hey?
+		Taya:  I know you must be quite confused and may be overwelming
+	Taya: You used to come visit me daily 
+	Taya: You never missed a day for 5 years
+	Taya: A year ago the incident happened
+	Taya: Jerry left you with Glep atleast thats what new came to me
+	- Jerry?
+		Taya: They never told you who he was? He was Your owner.
+		Taya: We havent heard from for a while
+	Taya: I used to visit after everything happened
+	Taya: But seeing you lay there on the deck montionless made want to visit less and less
+	Taya: Soon after I went blind and havent left the bridge
+	Taya: I dont have any task for you just promise me you will come back in the end
+	Taya: Just contine past the bridge you should meet some peaple
+	Taya: YAWNS VERY AGRESSIVELY
+	Taya: Im going to bed 
+	$> GameState.talked_to_taya = true
+
+else:
+	Taya: Snore
+	Taya: Go away
+	Taya:  5 more min 
+	Taya: Snore
+
+
+
+
+
+=> END
